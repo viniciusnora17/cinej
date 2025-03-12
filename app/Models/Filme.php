@@ -12,8 +12,6 @@ class Filme extends Model
     protected $table = 'filmes';
 
     protected $fillable  = ['nome', 'descricao', 'classificacao', 'image'];
-
-    
     
     public function sessoes() {
         return $this->belongsTo(Sessoes::class, 'filmes_id');

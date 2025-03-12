@@ -15,14 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('senha');
-            $table->integer('idade');
-            $table->bigInteger('cpf');
-            $table->enum('status', ['ativo', 'desativo'])->default('ativo'); 
-            $table->enum('role', ['admin', 'cliente'])->default('cliente');
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->rememberToken();
-		    $table->timestamps();
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
+            $table->timestamps();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

@@ -11,4 +11,10 @@ class Salas extends Model
 
     protected $table = 'salas';
 
+    protected $fillable  = ['id','numeroSala', 'qnt_lugares'];
+
+    public function sessoes() {
+        return $this->belongsTo(Sessoes::class, 'salas_id');
+    }
+
 }

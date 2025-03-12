@@ -1,4 +1,7 @@
 
+body, div{
+    max-width: 100%;
+}
 
 #section_1{
     background-image: url('../img/cine.jpg');

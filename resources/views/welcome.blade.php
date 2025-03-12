@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse " id="navbarNav">
                 <ul class="navbar-nav ms-auto "> 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_1">Home</a>
+                        <a class="nav-link click-scroll" href="/">Home</a>
                     </li>
 
                     <li class="nav-item">
@@ -40,13 +40,31 @@
                         </a>
                     </li>
 
+                    @auth
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_4">Login</a>
+                        <a class="nav-link click-scroll" href="/dashboard">Dashboard</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_4">Cadastrar-se</a>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <a class="nav-link click-scroll" href="/logout" onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                            Sair
+                        </a>
+                        </form>
                     </li>
+                    @endauth
+
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/login">Login</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/register">Cadastrar-se</a>
+                    </li>
+                    @endguest
 
                 </ul>
             </div>
@@ -55,7 +73,12 @@
 
     <main>
 
-    
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+
         <section class="hero-section hero-slide d-flex justify-content-center align-items-center" id="section_1">
             <div class="container">
                 <div class="row">
